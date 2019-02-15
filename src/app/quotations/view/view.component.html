@@ -1,0 +1,28 @@
+<div class="page-title">
+  <h4 class="mb-3">Quotations</h4>
+</div>
+<div class="card border-0">
+  <div class="card-body">
+    <div class="d-flex flex-wrap align-items-center">
+     <ims-search (searchClick)="searchClick($event)"></ims-search>
+      <a class="btn btn-primary ml-auto" (click)="onNewOqutation()">New Quotation</a>
+    </div>
+  </div>
+</div>
+<!-- export-start-->
+<ims-order-by [keys]="heading.key" (sortValue)="sort($event)" (exportData)="export($event)"></ims-order-by>
+<!-- export end -->
+<!-- start table -->
+<div class="card border-0">
+  <div class="card-body">
+    <div class="table-responsive border-bottom" id="contentToConvert">
+      <ims-table [header]="heading" [data]="qoutation" [action]="action" (actionClicked)="actionClick($event,$event)"></ims-table>
+    </div>
+    <!-- End table -->
+    <!--Start the shared component of pagination-->
+    <ims-pagination [total]="totalQutation" [current]="page" [size]="pageSize" (pageChange)="goToPage($event)"
+      (pageSizeChange)="goToPage($event)">
+    </ims-pagination>
+    <!--End the shared component of pagination-->
+  </div>
+</div>

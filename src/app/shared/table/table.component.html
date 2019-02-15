@@ -1,0 +1,33 @@
+<table class="table table-striped table-sm">
+  <thead>
+    <!-- for header display -->
+    <tr>
+      <th *ngFor="let head of header.name">{{head}}</th>
+    </tr>
+  <tbody>
+    <!-- for data display -->
+    <tr *ngFor="let data of dataList">
+      <ng-container *ngFor="let key of header.key">
+        
+        <td *ngIf="key ==='status'">
+          <span class="px-2 py-1 badge badge-secondary" [status]="data[key]" imsStatus>{{data[key]}}</span>
+        </td>
+        <td *ngIf="key !=='status'" (click)="actionClick(Action.VIEW,data.id)">
+          <ng-container>
+            {{data[key]}}
+          </ng-container>
+        </td>
+      </ng-container>
+      <!-- if user need actionable table then use -->
+      <ng-container *ngIf='action'>
+        <td *ngIf="Action.EDIT">
+          <a class="text-secondary mr-2" title="Edit" (click)="actionClick(Action.EDIT,data.id)"><span class="fa fa-pencil"></span></a>
+        </td>
+        <td *ngIf="Action.DELETE">
+          <a class="text-danger" title="Delete" (click)="actionClick(Action.DELETE,data.id)"><span class="fa fa-times"></span></a>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+
+</table>

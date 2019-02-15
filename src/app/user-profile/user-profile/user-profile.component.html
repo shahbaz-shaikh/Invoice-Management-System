@@ -1,0 +1,91 @@
+<div class="page-title">
+    <h4 class="mb-3">Personal Settings</h4> 
+    <!-- {{userProfileForm.value | json}} -->
+</div>
+<div class="card border-0">
+    <div class="card-header bg-white">
+        <b>Information</b>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit(userProfileForm);">
+            <!--Start Information Setting-->
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
+                    <div *ngIf="(userProfileForm.get('name').touched || userProfileForm.get('name').dirty ) && userProfileForm.get('name').errors"
+                        class="alert alert-danger">
+                        <div *ngIf="userProfileForm.get('name').errors.required">
+                            Admin Name Cannot be empty field.
+                        </div>
+                        <div *ngIf="userProfileForm.get('name').errors.pattern">
+                            Accept only Charecters and Whitespaces.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="title" class="d-flex align-items-center">Title<small class="ml-auto">(optional)</small></label>
+                    <input type="text" class="form-control" id="title" formControlName="title" placeholder="Title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="email" class="d-flex align-items-center">Email address<small class="ml-auto">(optional)</small></label>
+                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+                    <div *ngIf="(userProfileForm.get('email').touched || userProfileForm.get('email').dirty ) && userProfileForm.get('email').errors"
+                        class="alert alert-danger">
+                        <div *ngIf="userProfileForm.get('email').errors.pattern">
+                            Invlid Email address format.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="mobile_number" class="d-flex align-items-center">Mobile Number<small class="ml-auto">(optional)</small></label>
+                    <input type="text" class="form-control" id="mobile_number" formControlName="mobile_number"
+                        placeholder="Mobile-Number">
+                        <div *ngIf="userProfileForm.get('mobile_number').errors" class="alert alert-danger">
+                        <div *ngIf="userProfileForm.get('mobile_number').errors.pattern">
+                           Accept only Numeric Value.
+                        </div> 
+                        <div *ngIf="userProfileForm.get('mobile_number').errors.maxlength">
+                            Accept Maximum 10 digit Mobile Number allowed.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Information Setting-->
+
+            <!--Start Password Setting Component-->
+            <p><b>Password Settings</b></p>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="old-pass" class="d-flex align-items-center">Old Password
+                    <small class="ml-auto">
+                        <!-- <i class="fa fa-eye"></i>
+                        <i class="fa fa-eye-slash"></i> -->
+                    </small></label>
+                    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password"  imsPassword>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="new-pass" class="d-flex align-items-center">New Password<small class="ml-auto"></small></label>
+                    <input type="password" formControlName="new_password" class="form-control" id="new-pass" placeholder="Password" imsPassword> 
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="cnfm-new-pass" class="d-flex align-items-center">Confirm New Password<small class="ml-auto"></small></label>
+                    <input type="password" formControlName="retype_password" class="form-control" id="cnfm-new-pass" placeholder="Password"  imsPassword>
+                    <div class="alert alert-danger" *ngIf="userProfileForm.get('retype_password').errors?.notmatch">
+                        password and re-type password not match
+                    </div>
+                </div>
+                
+            </div>
+            <!--End Password Setting Component-->
+            <div class="col-12 text-right">
+                <button [disabled]="!userProfileForm.valid" type="submit" class="btn btn-primary">Save</button>
+                <button type="reset" class="btn btn-secondary" routerLink="/dashboard">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

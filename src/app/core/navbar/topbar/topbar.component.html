@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+    <a class="navbar-brand brand-logo mr-0" href="javascript:void(0)">
+      <b>Invoice Management</b>
+    </a>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-center px-sm-4">
+    <button class="navbar-toggler navbar-toggler align-self-center d-none d-lg-inline-block" type="button" data-toggle="minimize">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center mx-4 mx-sm-0" type="button" data-toggle="offcanvas">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="d-flex ml-3 flex-grow-1 align-items-center">
+      <ul class="list-unstyled d-md-flex mb-0 ml-auto align-items-center d-none">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fa fa-user mr-2"></span> {{name}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" routerLink="user-profile">Personal Settings</a>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" (click)="logout()" routerLink="#" >Logout</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

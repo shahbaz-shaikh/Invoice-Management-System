@@ -1,0 +1,127 @@
+ <!-- Start-Detail-Payment -->
+    <div class="page-title">
+      <h4 class="mb-3">Payment Detail</h4>
+    </div>
+    <div class="card border-0">
+      <div class="card-header bg-white d-flex flex-wrap align-items-center">
+        <div class="mb-sm-0 mb-2">
+          <h5>{{payments?.payment_number}}</h5>
+        </div>
+        <div class="ml-auto d-flex align-items-center">
+          <a routerLink="/payment/view" href="javascript:void(0)" class="btn btn-secondary mr-1"><span class="fa fa-arrow-left"></span></a>
+          <a href="#email-modal" class="btn btn-secondary mr-1" data-toggle="modal"><span class="fa fa-envelope-o"></span></a>
+          <a href="javascript:void(0)" class="btn btn-secondary mr-1" (click)="exportReport()"><span class="fa fa-file-o"></span></a>
+          <a (click)='deletePayment(payments.id)' href="javascript:void(0)" class="btn btn-danger mr-1"><span class="fa fa-trash"></span></a>
+        </div>
+      </div>
+      <div class="card-body p-lg-5" id="contentToConvert">
+        <div class="p-3 border">
+          <div class="row">
+            <div class="col-md-5 address-field text-left mb-md-0 mb-3">
+              To: <br> {{customers?.name}} <br> {{customers?.address}}
+            </div>
+            <div class="col-md-7 document-summery d-md-flex justify-content-md-end">
+              <table class="document-summary">
+                <tbody>
+                  <tr>
+                    <td>Number: </td>
+                    <td>{{quotations?.quotation_number}}</td>
+                  </tr>
+                  <tr>
+                    <td>Payment Date: </td>
+                    <td>{{payments?.date}}</td>
+                  </tr>
+                  <tr>
+                    <td>Amount: </td>
+                    <td>{{quotations?.grand_total | CustomeCurrency}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="table-responsive my-4">
+            <table class="document-table table table-striped table-bordered table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th class="w-50">Invoice</th>
+                  <th>Issue Date</th>
+                  <th>Grand Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a href="javascript:void(0)">
+                     {{invoices?.invoice_number}}
+                    </a>
+                  </td>
+                  <td>{{invoices?.issue_date}}</td>
+                  <td>{{quotations?.grand_total | CustomeCurrency}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" tabindex="-1" role="dialog" id="email-modal">
+        <div class="modal-dialog modal-lg" role="document">
+        <form id="myForm" [formGroup]="emailForm" (ngSubmit)="sendEmail(emailForm)">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sent Quotation as PDF attachment</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="email">Email To</label>
+                  <input type="email" class="form-control" id="to"  formControlName="to"/>
+                  <div *ngIf="(emailForm.get('to').touched || emailForm.get('to').dirty ) && emailForm.get('to').errors"
+                        class="alert alert-danger">
+                        <div *ngIf="emailForm.get('to').errors.required">
+                           Email address field required.
+                        </div>
+                        <div *ngIf="emailForm.get('to').errors.email">
+                            Incorrect Email Address.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="email-cc">BCC</label>
+                  <input type="email" class="form-control" id="bcc"  formControlName="bcc" />
+                </div>
+                <div class="form-group col-12">
+                  <label for="subject">Subject</label>
+                  <input type="text" class="form-control" id="subject"  formControlName="subject" />
+                  <div *ngIf="(emailForm.get('subject').touched || emailForm.get('subject').dirty ) && emailForm.get('subject').errors"
+                        class="alert alert-danger">
+                        <div *ngIf="emailForm.get('subject').errors.required">
+                            Required field of sender subject.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                  <label for="message">Message</label>
+                  <textarea rows="6" class="form-control" id="message"  formControlName="message"></textarea>
+                  <div *ngIf="(emailForm.get('message').touched || emailForm.get('message').dirty ) && emailForm.get('message').errors"
+                        class="alert alert-danger">
+                        <div *ngIf="emailForm.get('message').errors.required">
+                            Required field of message body.
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" [disabled]="!emailForm.valid" (click)="sendEmail();" data-toggle="!modal" data-dismiss="modal">Sent</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+ <!-- End-Details-Payment -->
+  

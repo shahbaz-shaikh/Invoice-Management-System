@@ -1,0 +1,17 @@
+<div class="d-flex flex-wrap align-items-center mt-3">
+  <div class="d-flex align-items-center entry-show mb-sm-0 mb-2">
+    <form class="mr-2">
+      <select class="form-control" (change)="goToPage($event);">
+          <option *ngFor="let option of pageLimitOptions"
+          [value]="option.value"> 
+            {{ option.value }} 
+          </option>
+      </select>
+    </form>
+    <small>Showing {{start}} - {{end}} of {{total}} entries.</small>
+  </div>
+  <div class="pagination-button ml-auto">
+      <button [disabled]="start==1" (click)="goNextPrev({target:{value:'prev'}})" class="btn btn-secondary"><span class="fa fa-angle-double-left"></span> Prev</button>
+      <button [disabled]="end==total" (click)="goNextPrev({target:{value:'next'}})" class="btn btn-secondary">Next <span class="fa fa-angle-double-right"></span></button>
+  </div>
+</div>

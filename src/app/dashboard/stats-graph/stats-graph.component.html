@@ -1,0 +1,62 @@
+<div class="row">
+
+  <div class="col-sm">
+      <h5>Invoice Status</h5>
+    <ngx-charts-pie-chart 
+    [view]="[800, 400]" 
+    [results]="invoiceChart" 
+    [labels]="true" 
+    [legend]="false" 
+    [legendTitle]="InvoiceStatus"
+    [explodeSlices]="true" 
+    [doughnut]="true" 
+    [arcWidth]="0.40" 
+    [gradient]="true" 
+    [tooltipDisabled]="false"></ngx-charts-pie-chart>
+   
+  </div>
+
+  <div class="col-sm" *ngIf="isBoolean">
+    <h5>Revenue </h5>
+    <ngx-charts-bar-vertical
+    [view]="[700, 400]"
+    [results]="paymentChart"
+    [xAxis]="true"
+    [yAxis]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxisLabel]="name"
+    [yAxisLabel]="month"
+    [yScaleMax]="20"
+    [yScaleMin]="0"
+    ></ngx-charts-bar-vertical>
+  </div>
+
+  <div class="col-sm">
+    <h5>Customers Visit</h5>
+    <ngx-charts-line-chart 
+    [view]="[1600,400]" 
+    [results]="customerChart"
+    [rangeFillOpacity]="0.15"
+    [legend]="false"
+    [legendTitle]="Customers"
+    [xAxis]="true"
+    [yAxis]="true"
+    [roundDomains]="true"
+    [showXAxisLabel]="false"
+    [showYAxisLabel]="true"
+    [xAxisLabel]="name"
+    [yAxisLabel]="value"
+    [xAxisTicks]=""
+    [yAxisTicks]=""
+    [timeline]="true"
+    [autoScale]="true"
+    [gradient]="true"
+    [showRefLines]="true"
+    [xScaleMin]=""
+    [xScaleMax]=""
+    [yScaleMin]="0"
+    [yScaleMax]="20"></ngx-charts-line-chart>
+  </div>
+<!-- <button (click)="change()">Show More Charts</button> -->
+</div>

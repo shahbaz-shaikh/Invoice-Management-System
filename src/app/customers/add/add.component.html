@@ -1,0 +1,118 @@
+<div class="page-title">
+  <h4 class="mb-3">Create Customer</h4>
+</div>
+<div class="card border-0">
+  <div class="card-body">
+    <form [formGroup]="customerForm" novalidate (ngSubmit)="addCustomer(customerForm.value)">
+      <div class="row border-bottom">
+        <div class="form-group col-md-4 col-sm-6">
+          <label for="person">Person</label>
+          <input type="text" class="form-control" id="person" formControlName="name">
+          <span *ngIf="(customerForm.get('name').touched || customerForm.get('name').dirty ) && customerForm.get('name').errors ">
+            <span *ngIf="customerForm.get('name').errors" >
+              This Field Can not be Empty.
+            </span><br>
+            <span *ngIf="customerForm.get('name').errors" >
+              only the alphabets and a space between the words should be allowed
+            </span>
+         </span>
+        </div>
+        <div class="form-group col-md-4 col-sm-6">
+          <label for="company" class="d-flex">Company<small class="ml-auto">(optional)</small></label>
+          <input type="text" class="form-control" id="company" formControlName="company">
+          <span *ngIf="(customerForm.get('company').touched || customerForm.get('company').dirty ) && customerForm.get('company').errors ">
+
+            <span *ngIf="customerForm.get('company').errors" >
+              only the alphabets,number and a space between the words should be allowed
+            </span>
+         </span>
+        </div>
+        <div class="form-group col-md-4 col-sm-6">
+          <label for="group" class="d-flex">Group<a href="#group-modal" data-toggle="modal" class="ml-auto"><small>+New</small></a></label>
+          <select class="form-control" formControlName="group">
+            <option>Type or click to select</option>
+            <option>General</option>
+            <option>Wholesaler</option>
+            <option>Retailer</option>
+          </select>
+          <span *ngIf="(customerForm.get('group').touched || customerForm.get('group').dirty ) && customerForm.get('group').errors ">
+            <span *ngIf="customerForm.get('group').errors" >
+              This Field Can not be Empty.
+            </span>
+         </span>
+        </div>
+        <div class="form-group col-md-4 col-sm-6">
+          <label for="email" class="d-flex">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+          <span *ngIf="(customerForm.get('email').touched || customerForm.get('email').dirty ) && customerForm.get('email').errors ">
+            <span *ngIf="customerForm.get('email').errors" >
+              only the email format is allowed
+            </span>
+         </span>
+        </div>
+
+        <div class="form-group col-md-4 col-sm-6">
+          <label for="mobile-number" class="d-flex">Mobile Number<small class="ml-auto">(optional)</small></label>
+          <input type="text" class="form-control" id="mobile-number" formControlName="mobile_number">
+          <span *ngIf="(customerForm.get('mobile_number').touched || customerForm.get('mobile_number').dirty ) && customerForm.get('mobile_number').errors ">
+            <span *ngIf="customerForm.get('mobile_number').errors" >
+              only 10 digit Number is allowed
+            </span>
+         </span>
+        </div>
+
+        <div class="form-group col-md-4 col-sm-6">
+          <input type="hidden" class="form-control" id="createdAt" formControlName="created_at">
+        </div>
+      </div>
+      <div class="row border-bottom mt-2">
+        <div class="form-group col-md-4 col-sm-6">
+          <label for="billing-address"> Address</label>
+          <textarea rows="4" class="form-control" formControlName="address"></textarea>
+        </div>
+        <div class="form-group col-md-4 col-sm-6">
+            <input type="hidden" class="form-control" id="customerNumber" formControlName="customer_number">
+          </div>
+      </div>
+      <div class="row border-bottom mt-2">
+        <div class="form-group col-md-4 col-sm-6">
+          <label for="note" class="d-flex">Note<small class="ml-auto" >(optional)</small></label>
+          <textarea rows="4" class="form-control" formControlName="note"></textarea>
+        </div>
+        <div class="form-group col-md-4 col-sm-6">
+          <label for="gstin" class="d-flex">GSTIN<small class="ml-auto">(optional)</small></label>
+          <input type="text" class="form-control" id="gstin" formControlName="GSTIN">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 text-right">
+          <button class="btn btn-primary" [disabled]="!customerForm.valid">Save</button>
+          <button class="btn btn-secondary">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="group-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Customer group</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" >Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

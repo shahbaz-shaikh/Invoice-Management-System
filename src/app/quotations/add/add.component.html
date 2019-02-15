@@ -1,0 +1,35 @@
+<div class="page-title">
+  <h4 class="mb-3">Create Quotation</h4>
+</div>
+<div class="card border-0 mb-3">
+  <div class="card-body" [formGroup]="quotationForm">
+    <div class="row">
+      <div class="form-group col-md-6 col-sm-5">
+        <label for="group" class="d-flex align-items-center">Customer<a href="#customer-modal" data-toggle="modal"
+            class="ml-auto"></a></label>
+        <select class="form-control" id="customer_id" formControlName="customer_id">
+          <option *ngFor="let customer of customerDetails" [ngValue]="customer.id">{{customer.customer_number}}</option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-7">
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="issue-date">Issue Date</label>
+            <input type="text" id="issue_date" formControlName="issue_date" class="form-control" disabled>
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="expiry-date">Expiry Date</label>
+            <input type="text" id="expiry-date" formControlName="expiry_date" class="form-control" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ims-item-description [data]="productDescription" [mode]="mode"></ims-item-description>
+    <div class="d-flex mt-3">
+      <div class="col-12 text-right">
+        <button type="submit" class="btn btn-primary" (click)="submitQuotation(this.quotationForm.value);">Save</button>
+        <button type="reset" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

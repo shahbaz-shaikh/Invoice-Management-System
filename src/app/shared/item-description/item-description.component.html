@@ -1,0 +1,108 @@
+<div class="table-responsive border-bottom mb-3" [formGroup]="itemForm">
+  <table class="table item-table">
+    <thead>
+      <tr>
+        <th>
+          <div class="d-flex align-items-center">
+            Item Description<a class="ml-auto" data-toggle="modal" href="#product-modal"> </a>
+          </div>
+        </th>
+        <th>U.O.M</th>
+        <th>Unit Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <ng-container formArrayName="addNewField">
+      <tbody>
+        <tr *ngFor="let field of addNewField.controls; let i=index" [formGroupName]="i">
+          <td>
+            <select formControlName="description" class="form-control" (change)="onSelectDescription(field.get('description').value,i)">
+              <option [value]="record.id" *ngFor="let record of itemList">
+                {{record.description}}
+              </option>
+            </select>
+          </td>
+          <td>
+            <input class="form-control" readonly type="text" formControlName="uom">
+          </td>
+          <td>
+            <input class="form-control" readonly type="text" formControlName="price">
+          </td>
+          <td>
+            <input class="form-control" type="text" formControlName="qty" (keyup)="onKeyUp($event.target.value,i)">
+          </td>
+          <td>
+            <div class="d-flex">
+              <input class="form-control" name="total" readonly type="text" formControlName="total">
+              <button class="btn bg-transparent border-0" (click)="deleteRow(i)">
+                <span class="fa fa-times text-danger"></span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </ng-container>
+    <tfoot>
+      <tr>
+        <td colspan="2">
+          <div>
+            <button (click)='addForm()' class="btn btn-secondary">
+              <span class="fa fa-plus"></span> Add new line
+            </button>
+          </div>
+        </td>
+        <td class="text-right" colspan="2">
+          Sub Total:
+        </td>
+        <td class="text-right pr-5">
+          {{subTotal}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td class="text-right" colspan="2">
+          <div class="d-flex align-items-center justify-content-end">
+            Discount&nbsp;<input class="form-control col-3" (keyup)="calculateDiscount($event.target.value)" type="text">
+          </div>
+        </td>
+        <td class="text-right pr-5">
+          -{{discountValue}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td class="text-right" colspan="2">
+          <div class="d-flex align-items-center justify-content-end">
+            CGST&nbsp;<input class="form-control col-2" (keyup)="calculateCGST($event.target.value)" type="text">&nbsp;%
+            :
+          </div>
+        </td>
+        <td class="text-right pr-5">
+          +{{cgstValue}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td class="text-right" colspan="2">
+          <div class="d-flex align-items-center justify-content-end">
+            SGST&nbsp;<input class="form-control col-2" (keyup)="calculateSGST($event.target.value)" type="text">&nbsp;%
+            :
+          </div>
+        </td>
+        <td class="text-right pr-5">
+          +{{sgstValue}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td class="text-right" colspan="2">
+          <strong>Grand Total:</strong>
+        </td>
+        <td class="text-right pr-5">
+          <strong>USD {{finalTotal}}</strong>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

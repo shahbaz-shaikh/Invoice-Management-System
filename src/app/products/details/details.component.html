@@ -1,0 +1,62 @@
+
+<div  class="page-title">
+  <h4 class="mb-3">Product</h4>
+</div>
+<div class="card border-0">
+  <div class="card-header bg-white d-flex flex-wrap align-items-center">
+    <div class="mb-sm-0 mb-2">
+      <h5>{{product.product_number}}</h5>
+    </div>
+    <div class="ml-auto d-flex align-items-center">
+      <a routerLink="/product/view" class="btn btn-secondary mr-1"><span class="fa fa-arrow-left"></span></a>
+      <a (click)="editProducts(product.id)" class="btn btn-secondary mr-1"><span class="fa fa-pencil"></span></a>
+      <a (click)="deleteProducts(product.id)" class="btn btn-danger mr-1"><span class="fa fa-trash"></span></a>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4 col-sm-5">
+        <img [src]='product.image' class="border" height="200" width="200" />
+        <!-- <img src="img.png" /> -->
+      </div>
+      <div class="col-md-8 col-sm-7">
+        <div class="table-responsive">
+          <table  class="table table-borderless">
+            <tr>
+              <td>
+                <strong >Item Code</strong>
+              </td>
+              <td >{{product.product_number}}</td>
+              <td>
+                <strong>Unit Price</strong>
+              </td>
+              <td>{{product.price | CustomeCurrency}}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Group</strong>
+              </td>
+              <td>{{product.group}}</td>
+              <td>
+                <strong>U.O.M</strong>
+              </td>
+              <td>{{product.uom }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Description</strong>
+              </td>
+              <td>{{product.description}}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Created at</strong>
+              </td>
+              <td>{{product.date}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

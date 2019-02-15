@@ -1,0 +1,26 @@
+<!-- datepicker -->
+<!-- <form  [formGroup]="dateForm">
+<div>
+<label>Date</label>
+<input type="text" ngbDatepicker #d="ngbDatepicker" placeholder="Date" formControlName="date" />
+<button (click)="d.toggle()" (click)="onSubmit($event)" type="button" >Date</button>
+</div>
+</form> -->
+
+
+<div class="d-flex flex-wrap align-items-center my-3">
+  <button class="btn btn-secondary mb-sm-0 mb-3" (click)="clickExport()">
+    <i class="fa fa-archive" aria-hidden="true"></i>&nbsp;Export</button>
+  <div class="ml-auto filter-table d-flex align-items-center">
+    <span>Order By</span>
+
+
+    <select (change)="orderBy($event);" class="filters-columns form-control form-inline">
+      <option *ngFor="let key of keys">{{ key }}
+      </option>
+    </select>
+
+    <span *ngIf="toggle" (click)="changeArrow()" class="fa fa-long-arrow-down u-none text-primary" (click)="sortData('DESC')"></span>
+    <span *ngIf="!toggle" (click)="changeArrow()" class="fa fa-long-arrow-up text-primary" (click)="sortData('ASC')"></span>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<!-- Start-View-Payment -->
+<div class="page-title">
+  <h4 class="mb-3">Payments</h4>
+</div>
+<div class="card border-0">
+  <div class="card-body">
+    <div class="d-flex flex-wrap align-items-center">
+
+    <!--Start Search reusable Component-->
+    <ims-search (searchClick)="search($event)"></ims-search>
+    <!--End Search reusable Component-->
+
+      <a routerLink="/payment/add" class="btn btn-primary ml-auto">Add Payment</a>
+    </div>
+  </div>
+</div>
+
+<!--Start Order By reusable Component-->
+<ims-order-by [keys]="sorting.key" (sortValue)="sort($event)" (exportData)="export($event);"></ims-order-by>
+<!--End Order By reusable Component-->
+
+<div class="card border-0">
+  <div class="card-body">
+
+    <div class="table-responsive border-bottom" id="contentToConvert">
+      <!--Start Table Reusable Component-->
+      <ims-table [header]="heading" [data]="records" [action]="action" (actionClicked)="actionClick($event);" CustomeCurrency>
+      </ims-table>
+      <!--ENd Table Reusable Component-->
+    </div>
+
+    <!--Start the shared component of pagination-->
+    <ims-pagination [total]="totalItems" [current]="page" [size]="pageSize" (pageChange)="goNextPrev($event)"
+      (pageSizeChange)="goToPage($event)">
+    </ims-pagination>
+    <!--End the shared component of pagination-->
+
+  </div>
+</div>
+<!-- End-View-Payment -->

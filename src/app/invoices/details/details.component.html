@@ -1,0 +1,195 @@
+
+    <!-- partial -->
+    <div class="main-panel bg-light">
+      <div class="content-wrapper">
+        <div class="page-title">
+          <h4 class="mb-3">Invoice Detail</h4>
+        </div>
+        <div class="card border-0 mb-3">
+          <div class="card-header bg-white d-flex flex-wrap align-items-center">
+            <div class="mb-sm-0 mb-2">
+              <h5>Quotation QT-10015</h5>
+            </div>
+            <div class="ml-auto d-flex align-items-center">
+              <a routerLink = '/invoice/view' class="btn btn-secondary mr-1"><span class="fa fa-arrow-left"></span></a>
+              <a href="#email-modal" class="btn btn-secondary mr-1" data-toggle="modal"><span class="fa fa-envelope-o"></span></a>
+              <a href="#" class="btn btn-secondary mr-1"><span class="fa fa-file-o"></span></a>
+              <a routerLink= "/payment/view" class="btn btn-secondary mr-1"><span class="fa fa-archive"></span></a>
+              <div class="navbar p-0">
+                <div class="dropdown">
+                  <a href="#" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fa fa-ellipsis-h"></span>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownLink">
+                    <a class="dropdown-item" href="#">Mark as Sent</a>
+                    <div class="dropdown-divider"></div>
+                    <a routerLink= "/invoice/add" class="dropdown-item" >Edit Invoice</a>
+                    <a class="dropdown-item" href="#">Clone Invoice</a>
+                    <a class="dropdown-item" href="#">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-lg-5">
+            <div class="p-3 border">
+              <div class="row">
+                <div class="col-md-5 address-field text-left mb-md-0 mb-3">
+                  To:<br> Kade Mills<br> 8961 Bechtelar Locks<br> Simonisborough, VA 98071<br> GSTIN: C-37247
+                </div>
+                <div class="col-md-7 document-summery d-md-flex justify-content-md-end">
+                  <table class="document-summary">
+                    <tbody>
+                      <tr>
+                        <td>Number:</td>
+                        <td>QT-10015</td>
+                      </tr>
+                      <tr>
+                        <td>Issue Date:</td>
+                        <td>13-Nov-2018</td>
+                      </tr>
+                      <tr>
+                        <td>Expiry Date:</td>
+                        <td>11-Dec-2018</td>
+                      </tr>
+                      <tr>
+                        <td>Grand Total:</td>
+                        <td>USD 6,094.00</td>
+                      </tr>
+                      <tr>
+                        <td>Status:</td>
+                        <td><span class="badge badge-secondary">Draft</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="table-responsive my-4">
+                <table class="document-table table table-striped table-bordered table-sm">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th class="w-12">Item Code</th>
+                      <th class="w-50">Description</th>
+                      <th>U.O.M</th>
+                      <th class="w-12">Unit Price</th>
+                      <th>Qty</th>
+                      <th class="w-12">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>P-103</td>
+                      <td>
+                        <a href="#">
+                          NETGEAR Orbi Home Mesh WiFi System (RBK50)
+                        </a>
+                      </td>
+                      <td>point</td>
+                      <td>
+                        3,909.00
+                      </td>
+                      <td>1</td>
+                      <td>
+                        3,909.00
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>P-106</td>
+                      <td>
+                        <a href="#">
+                          NETGEAR Nighthawk X4S AC2600 4x4 Dual Band Smart WiFi Router, Gigabit Ethernet, MU-MIMO, Compatible with Amazon Echo/Alexa (R7800)
+                        </a>
+                      </td>
+                      <td>point</td>
+                      <td>
+                        1,631.00
+                      </td>
+                      <td>1</td>
+                      <td>
+                        1,631.00
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td colspan="2">Sub Total:</td>
+                      <td>5,540.00</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td colspan="2">Discount:</td>
+                      <td>-0.00</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td colspan="2">
+                        CGST @ 5 %
+                      </td>
+                      <td>277.00</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td colspan="2">
+                        SGST @ 5 %
+                      </td>
+                      <td>277.00</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td colspan="2"><strong>Grand Total:</strong></td>
+                      <td><strong>USD 6,094.00</strong></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="terms-condition">
+                <b>Terms and Conditions</b>
+                <ol class="pl-3">
+                  <li><small>Delivery will be made within [DAYS] days following [COMPANY NAME] receipt of payment.</small></li>
+                  <li><small>Delivery will be made f.o.b. [COMPANY NAME] facility.</small></li>
+                  <li><small>The general terms and conditions of purchase at [WEBSITE LINK OR REFERENCE TO ATTACHMENT] apply to this quotation contract.</small></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" tabindex="-1" role="dialog" id="email-modal">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Sent Quotation as PDF attachment</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="email">Email To</label>
+                      <input type="email" class="form-control" id="email" />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="email-cc">BCC</label>
+                      <input type="email" class="form-control" id="email-cc" />
+                    </div>
+                    <div class="form-group col-12">
+                      <label for="subject">Subject</label>
+                      <input type="text" class="form-control" id="subject" />
+                    </div>
+                    <div class="form-group col-12">
+                      <label for="message">Message</label>
+                      <textarea rows="6" class="form-control" id="message"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Sent</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+ 

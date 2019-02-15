@@ -1,0 +1,12 @@
+<ims-topbar *ngIf="showSidebar$ | async" ></ims-topbar>
+<!-- <ims-topbar></ims-topbar> -->
+<div class="container-fluid page-body-wrapper">
+  <ims-sidebar *ngIf="showSidebar$ | async"></ims-sidebar>
+  <!-- <ims-sidebar></ims-sidebar> -->
+  <div class="main-panel bg-light">
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+    <ims-footer *ngIf="showSidebar$ | async"></ims-footer>
+  </div>
+</div>

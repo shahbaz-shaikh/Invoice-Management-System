@@ -1,0 +1,14 @@
+input[pw-show-hide] + span {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: .5ch;
+    text-transform: uppercase;
+    width: 4.5ch;
+    text-align: left;
+    line-height: 1;
+    vertical-align: middle;
+    small {
+      font-size: .7em;
+      opacity: .5;
+    }
+  }

@@ -1,0 +1,21 @@
+<div class="page-title">
+  <h4 class="mb-3">Products</h4>
+</div>
+<div class="card border-0">
+  <div class="card-body">
+    <div class="d-flex flex-wrap align-items-center">
+        <ims-search (searchClick)="search($event)" ></ims-search>
+    
+      <a routerLink="/product/add" class="btn btn-primary ml-auto">New Product</a>
+    </div>
+  </div>
+</div>
+<ims-order-by [keys]="heading.key" (sortValue)="onOrder($event)" (exportData)="export($event)"></ims-order-by>
+<div  class="table-responsive border-bottom" id='contentToConvert'>
+
+<ims-table [header]="heading" [action]="action" [data]="products" (actionClicked)="actionClick($event)"></ims-table>
+</div>
+
+<ims-pagination [total]="totalItems" [current]="page" [size]="pageSize" (pageChange)="goNextPrev($event)"
+(pageSizeChange)="goToPage($event)">
+</ims-pagination>
